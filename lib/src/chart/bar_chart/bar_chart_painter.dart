@@ -35,6 +35,7 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
       ..color = Colors.transparent
       ..strokeWidth = 1.0;
   }
+
   late Paint _barPaint;
   late Paint _barStrokePaint;
   late Paint _bgTouchTooltipPaint;
@@ -290,7 +291,11 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
               final rect = isNegative
                   ? Rect.fromLTRB(left, stackFromY, right, stackToY)
                   : Rect.fromLTRB(left, stackToY, right, stackFromY);
-              final textPainter = TextPainter(text: TextSpan(text: (stackItem.toY-stackItem.fromY).toString()));
+              final textPainter = TextPainter(
+                  text: TextSpan(
+                      text: (stackItem.toY - stackItem.fromY).toString()))
+                ..layout(maxWidth: rect.width);
+
               canvasWrapper
                 ..save()
                 ..clipRect(rect)
@@ -721,6 +726,7 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
 @visibleForTesting
 class GroupBarsPosition {
   GroupBarsPosition(this.groupX, this.barsX);
+
   final double groupX;
   final List<double> barsX;
 }
