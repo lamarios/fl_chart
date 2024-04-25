@@ -290,10 +290,12 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
               final rect = isNegative
                   ? Rect.fromLTRB(left, stackFromY, right, stackToY)
                   : Rect.fromLTRB(left, stackToY, right, stackFromY);
+              final textPainter = TextPainter(text: TextSpan(text: (stackItem.toY-stackItem.fromY).toString()));
               canvasWrapper
                 ..save()
                 ..clipRect(rect)
                 ..drawRRect(barRRect, _barPaint)
+                ..drawText(textPainter, Offset.zero)
                 ..restore();
 
               // draw border stroke for each stack item
