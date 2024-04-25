@@ -293,7 +293,8 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
                   : Rect.fromLTRB(left, stackToY, right, stackFromY);
               final textPainter = TextPainter(
                   text: TextSpan(
-                      text: (stackItem.toY - stackItem.fromY).toString()))
+                      text: (stackItem.toY - stackItem.fromY).toString()),
+                  textDirection: TextDirection.ltr)
                 ..layout(maxWidth: rect.width);
 
               canvasWrapper
