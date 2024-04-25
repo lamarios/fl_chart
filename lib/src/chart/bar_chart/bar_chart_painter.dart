@@ -295,7 +295,7 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
                   text: TextSpan(
                       text: (stackItem.toY - stackItem.fromY).toString(), style: const TextStyle(color: Colors.red, height: 20)),
                   textDirection: TextDirection.ltr)
-                ..layout(maxWidth: rect.width);
+                ..layout();
 
               canvasWrapper
                 ..save()
