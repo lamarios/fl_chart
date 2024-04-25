@@ -301,6 +301,10 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
                 ..save()
                 ..clipRect(rect)
                 ..drawRRect(barRRect, _barPaint)
+                ..restore();
+
+              canvasWrapper
+                ..save()
                 ..drawText(textPainter, Offset.zero)
                 ..restore();
 
