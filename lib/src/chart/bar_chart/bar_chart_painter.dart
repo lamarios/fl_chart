@@ -293,7 +293,8 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
                   : Rect.fromLTRB(left, stackToY, right, stackFromY);
               final textPainter = TextPainter(
                   text: TextSpan(
-                      text: (stackItem.toY - stackItem.fromY).toString(), style: const TextStyle(color: Colors.red, height: 20)),
+                      text: (stackItem.toY - stackItem.fromY).toString(),
+                      style: const TextStyle(color: Colors.red, height: 20)),
                   textDirection: TextDirection.ltr)
                 ..layout();
 
@@ -301,11 +302,16 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
                 ..save()
                 ..clipRect(rect)
                 ..drawRRect(barRRect, _barPaint)
-                ..restore();
+                ..restore()
 
-              canvasWrapper
+
                 ..save()
-                ..drawText(textPainter, Offset.zero)
+                ..drawText(
+                    textPainter,
+                    Offset(
+                        ((barRRect.left + barRRect.width) / 2) -
+                            (textPainter.width / 2),
+                        (barRRect.top + barRRect.height) / 2))
                 ..restore();
 
               // draw border stroke for each stack item
