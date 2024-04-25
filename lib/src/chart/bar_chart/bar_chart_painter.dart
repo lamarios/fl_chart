@@ -309,9 +309,9 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
                 ..drawText(
                     textPainter,
                     Offset(
-                        ((barRRect.left + barRRect.width) / 2) -
+                        ((rect.left + rect.width) / 2) -
                             (textPainter.width / 2),
-                        (barRRect.top + barRRect.height) / 2))
+                        (rect.top + rect.height) / 2),)
                 ..restore();
 
               // draw border stroke for each stack item
